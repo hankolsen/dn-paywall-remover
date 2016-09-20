@@ -1,0 +1,39 @@
+{
+  "name": "DN Paywall Remover",
+  "version": "0.0.2",
+  "manifest_version": 2,
+  "description": "DN Paywall Remover",
+  "icons": {
+    "16": "icons/favicon-16x16.png",
+    "32": "icons/favicon-32x32.png",
+    "96": "icons/favicon-96x96.png"
+  },
+  "background": {
+    "scripts": [
+      "src/bg/background.js"
+    ],
+    "persistent": false
+  },
+  "page_action": {
+    "default_icon": "icons/favicon-16x16.png",
+    "default_title": "DN Paywall Remover"
+  },
+  "permissions": [
+    "tabs",
+    "tts"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "http://www.dn.se/*",
+        "https://www.dn.se/*"
+      ],
+      "css": [
+        "src/inject/inject.css"
+      ],
+      "js": [
+        "src/inject/inject.js"
+      ]
+    }
+  ]
+}

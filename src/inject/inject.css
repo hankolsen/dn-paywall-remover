@@ -1,0 +1,14 @@
+
+.article__premium-content {
+  display: block !important;
+}
+.paywall__container {
+  display: none !important;
+}
+.article__body--mask .article__lead {
+  max-height: none !important;
+}
+
+.article__body--mask .article__lead:after {
+  display: none !important;
+}
