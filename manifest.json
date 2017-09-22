@@ -16,11 +16,13 @@
   },
   "page_action": {
     "default_icon": "icons/favicon-16x16.png",
-    "default_title": "DN Paywall Remover"
+    "default_title": "DN Paywall Remover",
+    "default_popup": "src/popup/popup.html"
   },
   "permissions": [
     "tabs",
-    "tts"
+    "tts",
+    "storage"
   ],
   "content_scripts": [
     {
