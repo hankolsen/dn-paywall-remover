@@ -16,7 +16,9 @@
   speakCheckbox.addEventListener('click', () => {
     const speak = speakCheckbox.checked;
     const data = { speak };
-    chrome.storage.sync.set({SYNC_KEY: data}, function() {
+    const items = {};
+    items[SYNC_KEY] = data;
+    chrome.storage.sync.set(items, function() {
 
     });
   });
