@@ -1,22 +1,30 @@
 (function () {
   'use strict';
 
-  const SYNC_KEY = 'DN_PAYWALL_REMOVER';
-
+  const SETTINGS_KEY = 'DN_PAYWALL_REMOVER';
   let doSpeak = true;
 
-  chrome.storage.sync.get(SYNC_KEY, (items) => {
-    if (!chrome.runtime.error) {
-      doSpeak = items[SYNC_KEY].speak;
-    }
-  });
+  window.loadSettings = function () {
+    return new Promise(resolve => {
+      chrome.storage.sync.get(SETTINGS_KEY, result => {
+        const defaultSettings = {
+          speak: true
+        };
+        const savedSettings = {...defaultSettings, ...result[SETTINGS_KEY]};
+        resolve(savedSettings);
+      })
+    })
+  };
 
-  chrome.storage.onChanged.addListener(function(changes, namespace) {
-    const newSettigns = changes[SYNC_KEY];
-    if (newSettigns) {
-      doSpeak = newSettigns.newValue.speak;
-    }
-  });
+  window.saveSettings = function (settings) {
+    const storage = {
+      [SETTINGS_KEY]: settings
+    };
+    chrome.storage.sync.set(storage);
+    doSpeak = settings.speak;
+  };
+
+
 
   chrome.extension.onMessage.addListener(
     function (request, sender, sendResponse) {
