@@ -12,3 +12,7 @@
 .article__body--mask .article__lead:after {
   display: none !important;
 }
+
+#pwOverlay {
+  display: none;
+}
