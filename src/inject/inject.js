@@ -6,8 +6,9 @@
 			if (document.readyState === "complete") {
 				clearInterval(readyStateCheckInterval);
 
-				var paywalls = document.getElementsByClassName('paywall__container');
-				if (paywalls && paywalls.length) {
+				const dnPaywalls = document.getElementsByClassName('paywall__container');
+				const svdAdblock = document.getElementById('ad-blocker-dialog-popup');
+				if (dnPaywalls && dnPaywalls.length || svdAdblock) {
 					chrome.runtime.sendMessage({paywall: true});
 				}
 			}

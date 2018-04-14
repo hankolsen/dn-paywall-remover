@@ -28,7 +28,8 @@
     {
       "matches": [
         "http://www.dn.se/*",
-        "https://www.dn.se/*"
+        "https://www.dn.se/*",
+        "https://www.svd.se/*"
       ],
       "css": [
         "src/inject/inject.css"
